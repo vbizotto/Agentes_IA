@@ -140,7 +140,30 @@ Os três padrões têm papéis distintos:
 
 Na prática, a maioria dos agentes em ambientes de produção usa *ReAct* porque equilibra bem custo, capacidade e observabilidade. Ainda assim, conhecer os outros padrões permite escolher a abordagem mais adequada para cada cenário.
 
-## 6. Conclusão
+## 6. Como escolher o padrão adequado
+
+É possível antecipar o cenário e escolher o padrão de raciocínio mais adequado antes de implementar o agente. A decisão não é simplesmente identificar qual modelo é melhor em geral, mas avaliar qual abordagem atende ao problema considerando custo, latência, risco e necessidade de ações externas.
+
+### Critérios de decisão
+
+Considere estas cinco dimensões:
+
+- **Complexidade do problema:** tarefas simples e bem definidas geralmente não exigem uma arquitetura sofisticada. Tarefas com várias etapas, dependências ou ambiguidades podem exigir um padrão mais robusto.
+- **Necessidade de ferramentas externas:** se o agente precisa consultar APIs, bancos de dados, a web ou arquivos, o *ReAct* costuma ser uma boa opção. Para tarefas que dependem apenas de raciocínio interno, o *Chain of Thought* pode ser suficiente.
+- **Exploração de alternativas:** se há vários caminhos plausíveis e é importante compará-los, o *Tree of Thought* pode ser útil. Para tarefas mais lineares, o *ReAct* tende a ser mais eficiente.
+- **Custo e latência:** em projetos sensíveis ao custo ou ao tempo de resposta, pode-se usar um modelo mais simples para tarefas de roteamento e reservar um modelo mais robusto para etapas complexas.
+- **Observabilidade e auditoria:** quando é importante analisar como o agente chegou a uma decisão ou identificar falhas, considere padrões que facilitem o acompanhamento do processo, como *ReAct*.
+
+### Exemplos de escolha
+
+- **Tarefa simples, sem ações externas:** use um modelo com um *prompt* bem estruturado; aplique *Chain of Thought* quando a tarefa exigir raciocínio em etapas.
+- **Busca de informações ou execução de ações:** use *ReAct* para combinar raciocínio, ferramentas e observação dos resultados.
+- **Planejamento com várias alternativas:** considere *Tree of Thought* para explorar e comparar diferentes caminhos.
+- **Produção com limites de custo ou tempo:** considere uma estratégia híbrida, com roteamento por complexidade e modelos de capacidades diferentes.
+
+Em geral, problemas simples pedem menos complexidade; tarefas dinâmicas que exigem ferramentas favorecem *ReAct*; e problemas com várias ramificações podem justificar *Tree of Thought*. A análise dos requisitos antes da implementação ajuda a prever qual abordagem atende melhor ao cenário.
+
+## 7. Conclusão
 
 Os padrões de raciocínio são fundamentais para transformar um LLM em um agente útil e eficaz. O *Chain of Thought* melhora a explicabilidade do raciocínio; o *ReAct* adiciona ação e acesso a ferramentas externas; e o *Tree of Thought* amplia a capacidade de explorar alternativas.
 
