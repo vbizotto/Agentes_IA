@@ -1,0 +1,88 @@
+# Demonstração de agentes de IA empresariais na OCI
+
+## Considerações iniciais
+
+### Visão geral
+
+Nesta demonstração, vamos configurar um projeto no OCI Enterprise AI Agents Service e executar um agente simples usando a API de Respostas da OCI. O exemplo também mostra como conectar o cliente compatível com OpenAI à infraestrutura da OCI e implementar manualmente um loop de chamadas de ferramentas.
+
+### Objetivos de aprendizagem
+
+Ao concluir esta demonstração, você será capaz de:
+
+- Identificar os pré-requisitos para executar o exemplo na OCI.
+- Entender a função do projeto, da região e da chave de API na configuração.
+- Reconhecer como configurar um cliente compatível com OpenAI para usar a OCI.
+- Descrever como o agente decide chamar uma ferramenta e processa o resultado.
+
+### Benefícios para você
+
+A demonstração conecta os conceitos teóricos à configuração prática. Ela também ajuda a visualizar o trabalho que um framework normalmente abstrai ao implementar o ciclo de chamadas de ferramentas.
+
+---
+
+# Transcrição da demonstração
+
+Bem-vindos a esta demonstração sobre como começar a usar o OCI Enterprise AI Agents Service. Vamos configurar os recursos necessários no Console da OCI e, em seguida, executar um programa de agente no Visual Studio Code.
+
+## 1. Pré-requisitos
+
+Para acompanhar o exemplo, são necessários:
+
+- Uma conta da OCI.
+- Um compartimento disponível.
+- Um projeto criado no OCI Enterprise AI Agents Service.
+- Uma chave de API e as permissões IAM necessárias.
+- Os pacotes do programa instalados e o código do agente preparado.
+
+Os nomes das opções e os requisitos podem variar conforme a configuração da conta e a versão atual do serviço. Consulte a documentação da OCI para obter instruções atualizadas.
+
+## 2. Criando o projeto e configurando credenciais
+
+No Console da OCI, selecione o compartimento e crie um projeto para reunir os recursos da demonstração. Depois que o projeto estiver ativo, obtenha seu OCID, que será usado na configuração do programa.
+
+Em seguida, crie uma chave de API e configure a política IAM exigida para que o usuário ou aplicação possa acessar os recursos necessários. A política depende das permissões e do escopo de acesso da conta; não presuma que uma conta administrativa representa a configuração recomendada para produção.
+
+### Protegendo a chave de API
+
+A chave é um segredo. Armazene-a em uma variável de ambiente ou em um gerenciador de segredos apropriado. Não a inclua diretamente no código, não a envie para repositórios e não a compartilhe em capturas de tela ou mensagens. Se uma chave for exposta, revogue-a e gere outra.
+
+## 3. Configurando a região e o modelo
+
+O exemplo define a região da OCI e o identificador do projeto no programa. A região deve ser compatível com o modelo escolhido: consulte a documentação da OCI para verificar quais modelos estão disponíveis em cada região e modo de serviço.
+
+A demonstração usa um modelo listado para a região selecionada. Esse modelo é apenas um exemplo; a escolha depende da disponibilidade, dos requisitos e das preferências do projeto.
+
+## 4. Conectando o cliente à OCI
+
+O programa usa um cliente compatível com OpenAI, mas configura a URL base para o endpoint regional da OCI e fornece as credenciais e informações do projeto exigidas pelo serviço.
+
+Assim, embora a interface do cliente siga um padrão compatível com OpenAI, as solicitações são direcionadas à infraestrutura da OCI. A URL base, a autenticação e os parâmetros devem seguir a documentação atual do serviço.
+
+## 5. Declarando e executando ferramentas
+
+O exemplo define ferramentas matemáticas para o agente. Como a API de Respostas é chamada diretamente, as ferramentas são descritas em JSON, incluindo seus nomes, parâmetros e descrições. O modelo recebe essa definição para decidir se precisa solicitar uma ferramenta; ele não executa diretamente o código Python.
+
+O programa implementa manualmente o loop do agente:
+
+1. Envia a solicitação e as definições das ferramentas ao modelo.
+2. Verifica se o modelo solicitou uma ferramenta.
+3. Executa localmente a função correspondente e obtém o resultado.
+4. Envia o resultado de volta ao modelo.
+5. Repete o processo até que o modelo produza uma resposta final, sem solicitar outra ferramenta.
+
+Esse ciclo mostra o que frameworks como LangChain ou o SDK de Agentes da OpenAI podem abstrair. Ao chamar a API diretamente, o desenvolvedor precisa implementar esse fluxo e tratar os resultados das chamadas.
+
+## 6. Executando e observando o exemplo
+
+A demonstração executa primeiro uma conversa simples, com uma pergunta sobre agentes de IA, e depois um exemplo que usa ferramentas matemáticas. As respostas são geradas pelo modelo selecionado na infraestrutura da OCI.
+
+O exemplo com ferramentas segue o mesmo princípio visto em outros frameworks: o modelo escolhe a ferramenta, o programa a executa e o resultado retorna ao modelo para compor a resposta.
+
+## 7. Recapitulando
+
+Nesta demonstração, criamos um projeto, configuramos credenciais e permissões, selecionamos uma região e um modelo e conectamos um cliente compatível com OpenAI à API de Respostas da OCI.
+
+Também vimos que, ao chamar a API diretamente, é necessário descrever as ferramentas e implementar o loop que coordena as solicitações ao modelo e a execução local das funções. Frameworks podem automatizar parte desse trabalho. Durante toda a configuração, mantenha as chaves protegidas e confirme os requisitos na documentação atual da OCI.
+
+Espero que esta demonstração tenha sido útil. Obrigado pelo seu tempo!
