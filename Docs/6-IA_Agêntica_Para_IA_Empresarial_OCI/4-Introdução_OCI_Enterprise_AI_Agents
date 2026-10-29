@@ -1,0 +1,95 @@
+# Introdução ao OCI Enterprise AI Agents Service
+
+## Considerações iniciais
+
+### Visão geral
+
+Nesta lição, vamos conhecer o OCI Enterprise AI Agents Service, um serviço gerenciado para desenvolver, orquestrar e executar agentes. Veremos duas formas de criar soluções com o serviço: usar a API de Respostas da OCI ou implantar uma aplicação de agente hospedada.
+
+Também vamos relacionar o serviço à arquitetura de ambiente de execução discutida na lição anterior e identificar quais responsabilidades permanecem com o desenvolvedor e quais são gerenciadas pela OCI.
+
+### Objetivos de aprendizagem
+
+Ao concluir esta lição, você será capaz de:
+
+- Descrever as duas abordagens para criar agentes com o serviço.
+- Diferenciar o uso da API de Respostas da implantação de uma aplicação hospedada.
+- Identificar as responsabilidades do desenvolvedor e do serviço gerenciado.
+- Reconhecer recursos de hospedagem, estado, ferramentas e integração oferecidos pelo serviço.
+
+### Benefícios para você
+
+Entender essas abordagens ajuda a escolher como executar um agente na OCI e a reconhecer quais responsabilidades operacionais podem ser atendidas pelo serviço, sem confundi-las com a lógica que continua sob responsabilidade da equipe.
+
+---
+
+# Transcrição da aula
+
+Bem-vindos de volta. Nesta lição, vamos analisar o OCI Enterprise AI Agents Service, um ambiente gerenciado projetado para o desenvolvimento e a orquestração de agentes. A Oracle apresenta recursos de execução, orquestração e gerenciamento em camadas; nesta aula, vamos considerá-los em conjunto como parte do ambiente de execução.
+
+## 1. Duas abordagens para criar agentes
+
+O serviço oferece duas abordagens principais para criar soluções com agentes.
+
+### Usar a API de Respostas da OCI
+
+A API de Respostas é uma abordagem centrada em API para criar agentes sem que a equipe precise montar por conta própria toda a infraestrutura de orquestração. A aula descreve a API como compatível com OpenAI e alinhada à especificação Open Responses.
+
+Para usá-la, o aplicativo envia solicitações à API da OCI. A URL base, a autenticação e os modelos usados são específicos da OCI. O serviço gerencia o fluxo de orquestração associado à API; os detalhes e recursos disponíveis dependem da configuração vigente.
+
+### Implantar uma aplicação hospedada
+
+Outra opção é empacotar a aplicação do agente em uma imagem de contêiner, enviá-la ao registro da OCI e implantá-la como uma aplicação gerenciada. A equipe pode usar o framework de sua escolha, como o SDK de Agentes da OpenAI.
+
+Nesse caminho, o serviço pode provisionar um endpoint HTTP e oferecer recursos gerenciados de escalabilidade, rede, armazenamento e integração de identidade, conforme a configuração da aplicação.
+
+## 2. Responsabilidades do desenvolvedor e do serviço
+
+O serviço gerenciado não substitui a lógica do agente. O desenvolvedor continua definindo:
+
+- As instruções do agente.
+- As ferramentas que ele poderá usar.
+- As fontes de conhecimento.
+- O resultado de negócio esperado.
+
+O serviço cuida de aspectos do ambiente de execução e da operação. A forma como responsabilidades como capacidade e escalabilidade são gerenciadas varia conforme a abordagem escolhida.
+
+## 3. Recursos do ambiente de execução gerenciado
+
+### Hospedagem e endpoints
+
+No caminho de aplicações hospedadas, a OCI pode fornecer um endpoint HTTPS para que clientes invoquem o agente implantado e integrar a autenticação com o domínio de identidade configurado.
+
+### Capacidade e escalabilidade
+
+Para aplicações hospedadas em contêineres, o serviço oferece recursos de escalabilidade automática. No caminho da API de Respostas, não há uma aplicação implantada pelo usuário para escalar da mesma forma; o serviço gerencia a capacidade da API. Os detalhes dependem da opção utilizada e da configuração.
+
+### Estado e sessões
+
+O serviço oferece recursos de memória de curto prazo, memória de longo prazo e compactação de contexto. A API de Conversas, por exemplo, armazena o histórico de uma conversa para que o agente possa usar o contexto anterior da mesma sessão. Esses recursos serão explorados em lições posteriores.
+
+### Ferramentas em sandbox
+
+O serviço inclui opções de execução isolada. O interpretador de código permite executar Python em um ambiente de sandbox, por exemplo, para análise de dados. A API de Contêineres permite executar contêineres personalizados para processamento especializado.
+
+### Integração com dados e serviços
+
+O serviço pode conectar agentes a recursos da OCI por meio de APIs e ferramentas, incluindo API de Arquivos, armazenamento vetorial, chamadas de função e chamadas MCP para servidores remotos. A aula também cita recursos de linguagem natural para SQL para acesso a dados corporativos federados; consulte a documentação atual para verificar disponibilidade e requisitos.
+
+### Observabilidade e operação
+
+O serviço pode se integrar aos componentes da OCI para registro, monitoramento e auditoria. Esses recursos ajudam a acompanhar a aplicação e investigar problemas durante a operação.
+
+## 4. Como essa abordagem se relaciona ao ambiente de execução
+
+Na lição anterior, vimos que um agente em produção precisa de mais do que sua lógica: também precisa de hospedagem, tratamento de solicitações, estado, ferramentas, integrações e observabilidade.
+
+Com o OCI Enterprise AI Agents Service, esses recursos podem ser fornecidos de forma gerenciada. Isso reduz a infraestrutura que a equipe precisa construir e operar, enquanto a equipe continua responsável pelo comportamento do agente, pelas ferramentas, pelas fontes de conhecimento e pelos objetivos da aplicação.
+
+## 5. Recapitulando
+
+Nesta lição, conhecemos duas formas de criar agentes com o OCI Enterprise AI Agents Service: usar a API de Respostas ou implantar uma aplicação hospedada, por exemplo, empacotada em um contêiner.
+
+Também vimos que a lógica e os objetivos do agente permanecem sob responsabilidade do desenvolvedor, enquanto o serviço pode gerenciar recursos do ambiente de execução, como hospedagem, capacidade, estado, ferramentas em sandbox e integração com serviços da OCI. Os recursos variam conforme a abordagem e a configuração.
+
+Espero que esta lição tenha sido útil. Obrigado pelo seu tempo!
