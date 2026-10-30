@@ -1,0 +1,48 @@
+# Resumo do Módulo 6
+
+## Considerações iniciais
+
+### Visão geral
+
+Neste módulo, vimos como levar agentes de IA de protótipos locais a aplicações empresariais. Exploramos o ambiente de execução, a plataforma OCI Enterprise AI, o serviço gerenciado de agentes, seus principais componentes e as opções de implantação.
+
+### Objetivos de aprendizagem
+
+Ao concluir este módulo, você será capaz de:
+
+- Explicar por que agentes precisam de um ambiente de execução para operar em produção.
+- Identificar as camadas da plataforma OCI Enterprise AI.
+- Reconhecer os recursos do serviço gerenciado de agentes.
+- Diferenciar as abordagens de uso da API de Respostas e de implantação de aplicações hospedadas.
+
+### Benefícios para você
+
+Compreender a plataforma como um conjunto integrado ajuda a tomar decisões de arquitetura e operação, considerando execução, modelos, ferramentas, memória, governança e implantação.
+
+---
+
+# Principais conceitos
+
+## 1. Ambiente de execução
+
+Criar a lógica do agente é apenas parte da solução. Para disponibilizá-lo em produção, também são necessários recursos de execução, orquestração, estado, integração, escalabilidade e observabilidade.
+
+## 2. Plataforma OCI Enterprise AI
+
+A plataforma combina modelos de IA empresarial, serviços de agentes e recursos de governança. Em conjunto, esses componentes apoiam a criação, a implantação e a operação de aplicações de IA em escala.
+
+## 3. Serviço de agentes e seus componentes
+
+O serviço gerenciado de agentes oferece recursos para execução e orquestração. Entre os componentes estudados estão a API de Respostas compatível com OpenAI, ferramentas, memória e APIs de nível inferior.
+
+A compatibilidade com interfaces no estilo OpenAI pode facilitar a migração de aplicações existentes, mas o esforço necessário depende dos recursos utilizados e da configuração.
+
+## 4. Opções de implantação
+
+O módulo apresentou duas abordagens: criar agentes usando a API de Respostas da OCI ou implantar aplicações de agentes hospedadas na OCI. A escolha depende dos requisitos de arquitetura, operação e governança de cada organização.
+
+## 5. Recapitulando
+
+O OCI Enterprise AI reúne recursos para criar e operar aplicações empresariais com agentes, desde modelos e ambientes de execução até governança e implantação. Entender a função de cada componente ajuda a selecionar a arquitetura adequada para cada projeto.
+
+Parabéns por concluir este módulo. Obrigado pelo seu empenho em aprender!
